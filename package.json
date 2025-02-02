@@ -1,0 +1,17 @@
+{
+  "name": "calendar_calc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "napi build --platform",
+    "build:debug": "napi build --platform --debug",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@napi-rs/cli": "^2.18.4"
+  },
+  "description": ""
+}
