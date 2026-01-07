@@ -1,0 +1,37 @@
+[package]
+name = "date-parallel"
+version = "1.0.0"
+edition = "2021"
+description = "High-performance parallel date difference calculations using Rust + JavaScript/Bun"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["seq"]
+seq = []
+parallel = ["rayon"]
+
+[dependencies]
+napi = { version = "2.16.13", features = ["async"] }
+napi-derive = "2.16.13"
+tokio = { version = "1.32.0", features = ["rt"] }
+rayon = { version = "1.9.0", optional = true }
+chrono = { version = "0.4.31", features = ["std"] }
+serde = { version = "1.0.193", features = ["derive"] }
+serde_json = "1.0.108"
+num_cpus = "1.16.0"
+
+[dev-dependencies]
+
+[profile.release]
+lto = true
+opt-level = 3
+strip = "symbols"
+codegen-units = 1
+
+[package.metadata.napi]
+package.name = "date-parallel"
+package.platform = {}

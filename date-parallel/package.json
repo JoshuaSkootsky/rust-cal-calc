@@ -1,0 +1,54 @@
+{
+  "name": "date-parallel",
+  "version": "1.0.0",
+  "description": "High-performance parallel date difference calculations using Rust + JavaScript/Bun",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "node": "./index.js",
+      "bun": "./index.js",
+      "default": "./index.js"
+    },
+    "./worker": {
+      "types": "./worker.d.ts",
+      "node": "./worker.js",
+      "bun": "./worker.js",
+      "default": "./worker.js"
+    }
+  },
+  "scripts": {
+    "build": "napi build --platform --release",
+    "build:linux": "napi build --platform --release --target x86_64-unknown-linux-gnu",
+    "build:macos": "napi build --platform --release --target x86_64-apple-darwin",
+    "build:windows": "napi build --platform --release --target x86_64-pc-windows-msvc",
+    "build:all": "npm run build:linux && npm run build:macos && npm run build:windows",
+    "test": "node --experimental-vm-modules --no-warnings __tests__/test.js",
+    "benchmark": "node benchmarks/benchmark.js",
+    "demo": "node main.js",
+    "lint": "eslint . --ext .js,.ts",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "date",
+    "parallel",
+    "rust",
+    "napi",
+    "performance",
+    "worker-threads"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.0.0"
+  },
+  "devDependencies": {
+    "@napi-rs/cli": "^2.18.4",
+    "@types/node": "^20.10.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.0"
+  }
+}
